@@ -1,4 +1,4 @@
-import services.FreteServices;
+import services.FreightService;
 
 import java.util.Map;
 
@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        FreteServices entrega = new FreteServices();
+        FreightService entrega = new FreightService();
         Map<String ,Double> dadosProntos = entrega.processFile();
 
         System.out.println(dadosProntos);

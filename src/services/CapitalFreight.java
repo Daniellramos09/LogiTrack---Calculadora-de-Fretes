@@ -1,14 +1,14 @@
 package services;
 
-import exceptions.PesoExcedidoException;
+import exceptions.WeightExceededException;
 
-public class FreteCapital implements FreteStrateg{
+public class CapitalFreight implements FreteStrateg{
     @Override
     public double calcularPreco(double peso) {
         if (peso < 20) {
             return 10.0 + peso;
         }else{
-            throw new PesoExcedidoException("Error: Peso Excedido!" );
+            throw new WeightExceededException("Error: Excess weight!" );
         }
     }
 }

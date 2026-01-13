@@ -1,8 +1,8 @@
 package services;
 
-import entities.Entrega;
-import exceptions.PesoExcedidoException;
-import exceptions.PesoInvalidoException;
+import entities.Delivery;
+import exceptions.WeightExceededException;
+import exceptions.InvalidWeightException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,11 +12,11 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class FreteServices {
+public class FreightService {
 
     public Map<String, Double> processFile(){
 
-        Set<Entrega> set = new HashSet<>();
+        Set<Delivery> set = new HashSet<>();
         Set<String>  idProcessados = new HashSet<>();
         Map<String,Double> map = new HashMap<>();
 
@@ -33,7 +33,7 @@ public class FreteServices {
                     Double kg = Double.parseDouble(split[3]);
                     String name = split[4];
 
-                    set.add(new Entrega(id, date, capital, kg,name));
+                    set.add(new Delivery(id, date, capital, kg,name));
 
                     if(!idProcessados.add(id)){
                         System.err.println("Id: " + id + " Duplicado");
@@ -43,16 +43,16 @@ public class FreteServices {
 
                     FreteStrateg frete;
                     if(capital.equalsIgnoreCase("CAPITAL")){
-                        frete = new FreteCapital();
+                        frete = new CapitalFreight();
                     }else{
-                        frete = new FreteInterior();
+                        frete = new InlandFreight();
                     }
 
                     double valorRecebido = frete.calcularPreco(kg);
 
                     map.merge(name, valorRecebido, Double::sum);
 
-                } catch (NumberFormatException | PesoExcedidoException | PesoInvalidoException e ){
+                } catch (NumberFormatException | WeightExceededException | InvalidWeightException e ){
                     System.err.println(e.getMessage() + " -- " + line);
 
                 }
@@ -60,7 +60,7 @@ public class FreteServices {
                  line = br.readLine();
             }
 
-            System.out.println("---------------RELATÓRIO DE PAGAMENTO-------------");
+            System.out.println("---------------PAYMENT REPORT-------------");
 
             map.entrySet().stream()
                     .sorted(Map.Entry.<String, Double>comparingByValue().reversed())

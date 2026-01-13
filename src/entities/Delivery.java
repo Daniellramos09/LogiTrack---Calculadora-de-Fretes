@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class Entrega {
+public class Delivery {
 
     DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -14,11 +14,11 @@ public class Entrega {
     private Double kg;
     private String name;
 
-    public Entrega(){
+    public Delivery(){
 
     }
 
-    public Entrega(String id, LocalDate date, String capital, Double kg, String name) {
+    public Delivery(String id, LocalDate date, String capital, Double kg, String name) {
         this.id = id;
         this.date = date;
         this.capital = capital;
@@ -70,7 +70,7 @@ public class Entrega {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Entrega entrega = (Entrega) o;
+        Delivery entrega = (Delivery) o;
         return Objects.equals(id, entrega.id);
     }
 
