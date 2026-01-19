@@ -3,7 +3,7 @@
 <p> 
  ### Cenário
 
-Você foi contratado por uma transportadora. Eles recebem um arquivo `.csv` sujo com tentativas de entrega. Seu sistema precisa ler isso, ignorar duplicatas, calcular o valor do frete baseado na região (Capital ou Interior) e gerar um relatório de **Quanto cada Motorista faturou**.
+A empresa recebe um arquivo `.csv` sujo com tentativas de entrega. O sistema precisa ler isso, ignorar duplicatas, calcular o valor do frete baseado na região (Capital ou Interior) e gerar um relatório de **Quanto cada Motorista faturou**.
 
 
 
